@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import * as THREE from 'three'
 import { useSprings, a } from '@react-spring/three'
+import {PresentationControls} from '@react-three/drei'
 
 
 const number = 25
@@ -30,17 +31,34 @@ export const Process = (): JSX.Element =>  {
   }))
 
   useEffect(() => void setInterval(() => api.start((i) => ({ ...random(i), delay: i * 40 })), 3000), [])
-
   return (
     <>
-      {data.map((d, index) => (
-        <a.mesh key={index} {...springs[index]} castShadow receiveShadow>
-            {/* @ts-ignore */}
-          <boxGeometry attach="geometry" args={d.args} />
-            {/* @ts-ignore */}
-          <a.meshPhysicalMaterial attach="material" color={springs[index].color} roughness={0.75} metalness={0.5} />
-        </a.mesh>
-      ))}
+      <ambientLight intensity={2.5} />
+      <directionalLight intensity={2.5} />
+      <color args={['#000000']} attach='background'/>
+
+    <PresentationControls
+            global
+            rotation={[0.13, 0.1, 0 ]}
+            polar={[-0.4, 0.2]}
+            azimuth={[-1, 0.75]}
+            config={{mass: 2, tension: 400}}
+            snap={{mass: 4, tension: 400}}
+        >
+
+      <group
+        position-z={-105}
+      >
+          {data.map((d, index) => (
+            <a.mesh key={index} {...springs[index]} castShadow receiveShadow>
+                {/* @ts-ignore */}
+              <boxGeometry attach="geometry" args={d.args} />
+                {/* @ts-ignore */}
+              <a.meshPhysicalMaterial attach="material" color={springs[index].color} roughness={0.75} metalness={0.5} />
+            </a.mesh>
+          ))}
+      </group>
+    </PresentationControls>
     </>
   )
 }

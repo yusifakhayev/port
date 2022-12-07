@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {Computer} from './Computer/Computer'
 import {Sphere} from './World/Sphere/Sphere'
 import {Process} from './World/Process/Process'
+import {Physics} from './World/Physics/Physics'
 import {ComputerState} from './Store/ComputerState'
 import {Perf} from 'r3f-perf'
 
@@ -11,6 +12,7 @@ export const Experience = (): JSX.Element => {
     const [computerActive, setComputerActive] = useState(true)
     const [sphereActive, setSphereActive] = useState(false)
     const [processActive, setProcessActive] = useState(false)
+    const [physicsActive, setPhysicsActive] = useState(false)
 
 
     useEffect(() => {
@@ -32,6 +34,12 @@ export const Experience = (): JSX.Element => {
                     case "ProcessOut":
                         setProcessActive(processActive => !processActive)
                         break
+                    case "Physics":
+                        setPhysicsActive(physicsActive => !physicsActive)
+                        break
+                    case "PhysicsOut":
+                        setPhysicsActive(physicsActive => !physicsActive)
+                        break
                 }
                 setComputerActive(computerActive => !computerActive)
             }
@@ -45,8 +53,10 @@ export const Experience = (): JSX.Element => {
 
     return <>
         {computerActive && <Computer />}
-        {sphereActive && <Sphere /> }
-        {processActive && <Process /> }
-        <Perf/>
+        {sphereActive && <Sphere />}
+        {processActive && <Process />}
+        {physicsActive && <Physics />}
+
+        <Perf />
     </>
 }
