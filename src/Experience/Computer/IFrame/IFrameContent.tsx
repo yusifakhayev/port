@@ -8,10 +8,10 @@ export const IFrameContent = () => {
     },[])
 
     return (
-        <div className='bg-black'>
-            <h1 className='text-3xl bg-black' onClick={toggleComputerState}>just testing</h1>
+        <div className='text-red-200'>
+            <h1 className='text-red-200' onClick={toggleComputerState}>just testing</h1>
             <p></p>
             <p></p>
         </div>
-    )
+     )
 }
