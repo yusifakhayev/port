@@ -43,7 +43,7 @@ export const Computer = (): JSX.Element => {
                  >
                      <Html
                          transform
-                         className='w-[1024px] h-[670px] rounded-2xl bg-black border-none'
+                         wrapperClass='htmlScreen'
                          distanceFactor={1.17}
                          position={[0, 1.56, -1.4 ]}
                          rotation-x={-0.256}

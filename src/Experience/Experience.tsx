@@ -14,7 +14,7 @@ export const Experience = (): JSX.Element => {
 
         const unsubscribeComputer = ComputerState.subscribe(
             (state) => state.computerState,
-            (value) => {
+            () => {
                 setComputerActive(computerActive => !computerActive)
                 setSphereActive(sphereActive => !sphereActive)
             }

@@ -7,7 +7,7 @@ export const IFrame = ({children}: {children: any}) => {
 
     return (
         //@ts-ignore
-        <iframe title="iframe" ref={setRef} className='bg-black'>
+        <iframe title="iframe" ref={setRef} >
             {container && createPortal(children, container)}
         </iframe>
     )
