@@ -1,8 +1,8 @@
 export const Sphere = (): JSX.Element => {
     return <>
         <mesh>
-            <sphereGeometry/><
-            <meshToonMaterial/>
+            <sphereGeometry/>
+            <meshBasicMaterial/>
         </mesh>
     </>
 }

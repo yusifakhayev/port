@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {Computer} from './Computer/Computer'
-import {Sphere} from './World/Sphere'
+import {Sphere} from './World/Sphere/Sphere'
 
 export const Experience = (): JSX.Element => {
     const [reload, setReload] = useState(0)
