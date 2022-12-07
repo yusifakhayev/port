@@ -2,11 +2,12 @@ import {useEffect, useState} from 'react'
 import {Computer} from './Computer/Computer'
 import {Sphere} from './World/Sphere/Sphere'
 import {ComputerState} from './Store/ComputerState'
+import {Perf} from 'r3f-perf'
 
 export const Experience = (): JSX.Element => {
     const [reload, setReload] = useState(0)
     const [computerActive, setComputerActive] = useState(true)
-    const [sphereActive, setSphereActive] = useState(true)
+    const [sphereActive, setSphereActive] = useState(false)
 
     useEffect(() => {
         setReload(reload => reload + 1)
@@ -15,10 +16,12 @@ export const Experience = (): JSX.Element => {
             (state) => state.computerState,
             (value) => {
                 setComputerActive(computerActive => !computerActive)
+                setSphereActive(sphereActive => !sphereActive)
             }
         )
 
         return () => {
+            setReload(reload => reload + 1)
             unsubscribeComputer()
         }
     }, [])
@@ -26,5 +29,6 @@ export const Experience = (): JSX.Element => {
     return <>
         {computerActive && <Computer />}
         {sphereActive && <Sphere /> }
+        <Perf/>
     </>
 }
