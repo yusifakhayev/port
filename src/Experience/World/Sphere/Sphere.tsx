@@ -132,6 +132,7 @@ export const Sphere = (): JSX.Element => {
     useFrame((state, delta) => {
         uniforms.uTime.value += delta * 0.5
     })
+
     useEffect(() => {
     },[])
 
