@@ -150,7 +150,7 @@ export const Sphere = (): JSX.Element => {
                 ref={memoSphere}
                 raycast={meshBounds}
                 onClick={() => {click(clicked => !clicked)}}
-                onDoubleClick={() => toggleComputerState()}
+                onDoubleClick={() => toggleComputerState('SphereOut')}
                 scale={scale}
             >
                 <sphereGeometry

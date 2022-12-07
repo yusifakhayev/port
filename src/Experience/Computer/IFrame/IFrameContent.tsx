@@ -37,12 +37,16 @@ export const IFrameContent = () => {
                             padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
                             width: '33.333333%', height: '50%'
                         }}
-                        onClick={toggleComputerState}
+                        onClick={() => {
+                            toggleComputerState('Sphere')
+                        }}
                     >Sphere</button>
                     <button
                         style={{
                             padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
                             width: '33.333333%', height: '50%'
+                        }}
+                        onClick={() => {
                         }}
                     >Physics</button>
 
@@ -62,6 +66,9 @@ export const IFrameContent = () => {
                         style={{
                             padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
                             width: '33.333333%', height: '50%'
+                        }}
+                        onClick={() => {
+                            toggleComputerState('Process')
                         }}
                     >Process</button>
                 </div>
