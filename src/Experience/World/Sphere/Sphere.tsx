@@ -2,14 +2,17 @@ import * as THREE from 'three'
 import {Mesh} from 'three'
 //@ts-ignore
 import vertexShader from './shaders/vertex.glsl'; import fragmentShader from './shaders/fragment.glsl'
-import {useMemo, useEffect, useRef} from 'react'
+import {useMemo, useEffect, useRef, useState} from 'react'
 import {useFrame} from '@react-three/fiber'
-import {meshBounds} from '@react-three/drei'
+import {meshBounds, Text, PresentationControls} from '@react-three/drei'
 import {a, useSpring} from '@react-spring/three'
+import {ComputerState} from '../../Store/ComputerState'
 /* import {useControls} from 'leva' */
 
 export const Sphere = (): JSX.Element => {
 
+    const [clicked, click] = useState(false)
+    const toggleComputerState = ComputerState((state) => state.toggleComputerState)
     const profiles = [
         {aDistStr: 4.52, aDistFreq: 1.09, aDispStr: 0.18, aDispFreq: 1.41},
         {aDistStr: 10.00, aDistFreq: 0.66, aDispStr: 0.34, aDispFreq: 0.20},
@@ -133,42 +136,52 @@ export const Sphere = (): JSX.Element => {
     },[])
 
     return <>
-        <a.mesh
-            ref={memoSphere}
-            raycast={meshBounds}
-            onClick={() => {click()}}
-            onPointerDown={() => console.log('pointer down')}
-            onPointerUp={() => console.log('pointer up')}
-            scale={scale}
+        <color args={['#000000']} attach='background'/>
+        <PresentationControls
+            global
+            rotation={[0.13, 0.1, 0 ]}
+            polar={[-0.4, 0.2]}
+            azimuth={[-1, 0.75]}
+            config={{mass: 2, tension: 400}}
+            snap={{mass: 4, tension: 400}}
         >
-            <sphereGeometry
-                args={[1, 512, 512]}
-            />
-            {/* @ts-ignore */}
-            <a.shaderMaterial
-                vertexShader={vertexShader}
-                fragmentShader={fragmentShader}
-                uniforms={uniforms}
-                uniforms-uDistStr-value={aDistStr}
-                uniforms-uDistFreq-value={aDistFreq}
-                uniforms-uDispStr-value={aDispStr}
-                uniforms-uDispFreq-value={aDispFreq}
-                uniforms-uColMultA-value={aColMultA}
-                uniforms-uColMultB-value={aColMultB}
+            <a.mesh
+                ref={memoSphere}
+                raycast={meshBounds}
+                onClick={() => {click(clicked => !clicked)}}
+                onDoubleClick={() => toggleComputerState()}
+                scale={scale}
+            >
+                <sphereGeometry
+                    args={[1, 512, 512]}
+                />
+                {/* @ts-ignore */}
+                <a.shaderMaterial
+                    vertexShader={vertexShader}
+                    fragmentShader={fragmentShader}
+                    uniforms={uniforms}
+                    uniforms-uDistStr-value={aDistStr}
+                    uniforms-uDistFreq-value={aDistFreq}
+                    uniforms-uDispStr-value={aDispStr}
+                    uniforms-uDispFreq-value={aDispFreq}
+                    uniforms-uColMultA-value={aColMultA}
+                    uniforms-uColMultB-value={aColMultB}
 
-                uniforms-ulightAIntensity-value={alightAIntensity}
-                uniforms-ulightBIntensity-value={alightBIntensity}
+                    uniforms-ulightAIntensity-value={alightAIntensity}
+                    uniforms-ulightBIntensity-value={alightBIntensity}
 
-                uniforms-ulightAPosition-value-x={alightAPositionX}
-                uniforms-ulightAPosition-value-y={alightAPositionY}
-                uniforms-ulightAPosition-value-z={alightAPositionZ}
+                    uniforms-ulightAPosition-value-x={alightAPositionX}
+                    uniforms-ulightAPosition-value-y={alightAPositionY}
+                    uniforms-ulightAPosition-value-z={alightAPositionZ}
 
-                uniforms-ulightBPosition-value-x={alightBPositionX}
-                uniforms-ulightBPosition-value-y={alightBPositionY}
-                uniforms-ulightBPosition-value-z={alightBPositionZ}
+                    uniforms-ulightBPosition-value-x={alightBPositionX}
+                    uniforms-ulightBPosition-value-y={alightBPositionY}
+                    uniforms-ulightBPosition-value-z={alightBPositionZ}
 
-            />
-        </a.mesh>
+                />
+            </a.mesh>
+        </PresentationControls>
+
     </>
 }
 
