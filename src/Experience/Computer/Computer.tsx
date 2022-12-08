@@ -15,29 +15,28 @@ export const Computer = (): JSX.Element => {
     const [reload, setReload] = useState(0)
     const [cameraZoom, setCameraZoom] = useState(false)
 
-
     useEffect(() => {
         setReload(reload => reload + 1)
     },[])
 
-    {/* -2.2, -1.2 -> -0.5, 3.2 */}
-
     const { position } = useSpring({
-        position: cameraZoom ? [-2.2, -0.5, 3.2] : [0, -1.2, 0],
+        position: cameraZoom ? [-2.4, -0.2, 3.0] : [0, -1.2, 0],
         config: config.molasses
     })
 
+    const {rotation} = useSpring({
+        rotation: cameraZoom ? [-0.16, -0.7, -0.04] : [0,0,0],
+        config: config.molasses
+    })
 
-    /* const {position, scale} = useControls('computer', { */
-    /*     position: { */
-    /*         value: [0,0,0], */
-    /*         min: -10, */
-    /*         max: 10 */
-    /*     }, */
-    /*     scale: { */
-    /*         value: 1 */
-    /*     } */
-    /* }) */
+    const {dummyRotation} = useSpring({
+        dummyRotation: cameraZoom ? [-0.416, -0.7, -0.04] : [-0.256, 0, 0],
+        config: config.molasses
+    })
+    const {dummyPosition} = useSpring({
+        dummyPosition: cameraZoom ? [-2.5, 1.4, 1.7] : [-0.1, 0.4, -1.3],
+        config: config.molasses
+    })
 
     return <>
          <Environment
@@ -65,22 +64,26 @@ export const Computer = (): JSX.Element => {
                      position={ [ 0, 0.55, - 1.15 ] }
                  />
 
-                 <mesh
+                 <a.mesh
                     visible={false}
-                    scale={[3, 2.5, 3]}
-                    rotation-x={-0.256}
+                    //@ts-ignore
+                    rotation={dummyRotation}
+                    scale={[3.3, 2.0, 3.0]}
+                    //@ts-ignore
+                    position={dummyPosition}
                     onPointerEnter={() => setCameraZoom(cameraZoom => !cameraZoom)}
                     onPointerOut={() => setCameraZoom(cameraZoom => !cameraZoom)}
                  >
                      <planeGeometry/>
                      <meshBasicMaterial/>
-                 </mesh>
+                 </a.mesh>
 
                  {/* @ts-ignore */}
                  <a.primitive
                      object={macbook.scene}
                      position-y={- 1.2}
                      position={position}
+                     rotation={rotation}
                  >
                      <Html
                          transform
