@@ -101,7 +101,7 @@ export const Computer = (): JSX.Element => {
                      fontSize={1}
                      position={[2,0.75,0.75]}
                      rotation-y={- 1.25}
-                 >yuska</Text>
+                 >yusif</Text>
              </Float>
          </PresentationControls>
          <ContactShadows

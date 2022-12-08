@@ -4,7 +4,6 @@ import {Sphere} from './World/Sphere/Sphere'
 import {Process} from './World/Process/Process'
 import {Attractors} from './World/Physics/Physics'
 import {ComputerState} from './Store/ComputerState'
-import {Perf} from 'r3f-perf'
 
 export const Experience = (): JSX.Element => {
     const [reload, setReload] = useState(0)
@@ -56,7 +55,5 @@ export const Experience = (): JSX.Element => {
         {sphereActive && <Sphere />}
         {processActive && <Process />}
         {physicsActive && <Attractors />}
-
-        <Perf />
     </>
 }

@@ -50,6 +50,7 @@ export const Process = (): JSX.Element =>  {
         position-z={-105}
       >
           {data.map((d, index) => (
+            // @ts-ignore
             <a.mesh key={index} {...springs[index]} castShadow receiveShadow>
                 {/* @ts-ignore */}
               <boxGeometry attach="geometry" args={d.args} />

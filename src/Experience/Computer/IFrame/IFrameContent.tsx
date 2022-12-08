@@ -6,44 +6,9 @@ import CSS from 'csstype'
 
 export const IFrameContent = () => {
     const toggleComputerState = ComputerState((state) => state.toggleComputerState)
-    const [booped, boop] = useState(false)
-    const timing = 100
-
-    const aButtonStyle = useSpring({
-        padding: '4rem',
-        paddingLeft: '0.5rem',
-        paddingRight: '0.5rem',
-        margin: '1.5rem',
-        alignItems: 'center',
-        fontSize: '2.25rem',
-        lineHeight: '1.75rem',
-        fontWeight: '700',
-        borderRadius: '0.25rem',
-        borderColor: 'white',
-        borderWidth: '1px',
-        boxSizing: 'border-box',
-        width: '33.333333%',
-        height: '50%',
-        color: booped
-            ? '#ff0000'
-            : '#475569'
-    })
 
     useEffect(() => {
-        if (!booped) return
-
-        const timeout = window.setTimeout(() => {
-            boop(booped => !booped)
-        }, timing)
-
-        return () => {
-            window.clearTimeout(timeout)
-        }
-    },[booped, timing])
-
-    const trigger = () => {
-        boop(true)
-    }
+    },[])
 
     const innerWrapperStyle: CSS.Properties = {
         flexDirection: 'column',
@@ -117,11 +82,9 @@ export const IFrameContent = () => {
 
                 </div>
                 <div style={buttonWrapperStyle} >
-                    <a.button
-                        // @ts-ignore
-                        style={aButtonStyle}
-                        onMouseEnter={trigger}
-                    >Clouds</a.button>
+                    <button
+                        style={buttonStyle}
+                    >Clouds</button>
                     <button
                         style={buttonStyle}
                         onClick={() => {
