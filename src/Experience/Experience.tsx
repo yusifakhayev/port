@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Computer} from './Computer/Computer'
 import {Sphere} from './World/Sphere/Sphere'
 import {Process} from './World/Process/Process'
-import {Physics} from './World/Physics/Physics'
+import {Attractors} from './World/Physics/Physics'
 import {ComputerState} from './Store/ComputerState'
 import {Perf} from 'r3f-perf'
 
@@ -55,7 +55,7 @@ export const Experience = (): JSX.Element => {
         {computerActive && <Computer />}
         {sphereActive && <Sphere />}
         {processActive && <Process />}
-        {physicsActive && <Physics />}
+        {physicsActive && <Attractors />}
 
         <Perf />
     </>

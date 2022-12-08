@@ -8,14 +8,17 @@ export const IFrameContent = () => {
     },[])
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '0.75rem',
-        }}>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '0.75rem',
+                fontFamily: 'Iosevka'
+            }}
+        >
             <h1
                 style={{
-                    fontSize: '2.25rem', fontStyle: 'italic', fontWeight: '800',
+                    fontSize: '3.25rem', fontStyle: 'italic', fontWeight: '800',
                     textAlign: 'center'
                 }}
             >Welcome to <span style={{
@@ -34,8 +37,8 @@ export const IFrameContent = () => {
                 >
                     <button
                         style={{
-                            padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
-                            width: '33.333333%', height: '50%'
+                            padding: '4rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '1.5rem', alignItems: 'center', fontSize: '2.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
+                            width: '33.333333%', height: '50%',
                         }}
                         onClick={() => {
                             toggleComputerState('Sphere')
@@ -43,10 +46,11 @@ export const IFrameContent = () => {
                     >Sphere</button>
                     <button
                         style={{
-                            padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
+                            padding: '4rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '1.5rem', alignItems: 'center', fontSize: '2.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
                             width: '33.333333%', height: '50%'
                         }}
                         onClick={() => {
+                            toggleComputerState('Physics')
                         }}
                     >Physics</button>
 
@@ -58,13 +62,13 @@ export const IFrameContent = () => {
                 >
                     <button
                         style={{
-                            padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
+                            padding: '4rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '1.5rem', alignItems: 'center', fontSize: '2.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
                             width: '33.333333%', height: '50%'
                         }}
                     >Clouds</button>
                     <button
                         style={{
-                            padding: '2rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '0.5rem', alignItems: 'center', fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
+                            padding: '4rem', paddingLeft: '0.5rem', paddingRight: '0.5rem', margin: '1.5rem', alignItems: 'center', fontSize: '2.25rem', lineHeight: '1.75rem', fontWeight: '700', color: 'rgb(71, 85, 105)', borderRadius: '0.25rem', borderColor: 'white', borderWidth: '1px', boxSizing: 'border-box',
                             width: '33.333333%', height: '50%'
                         }}
                         onClick={() => {

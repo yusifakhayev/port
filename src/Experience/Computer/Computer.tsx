@@ -1,15 +1,43 @@
 import {useGLTF, Environment, Float, PresentationControls, ContactShadows, Html, Text} from '@react-three/drei'
 import {IFrame} from './IFrame/IFrame'
 import {IFrameContent} from './IFrame/IFrameContent'
+import {useThree} from '@react-three/fiber'
 import {useEffect, useState} from 'react'
+import {useControls} from 'leva'
+import {useSpring, a, config} from '@react-spring/three'
+
+/* const deg2rad = degrees => degrees * (Math.PI / 180); */
+
 
 export const Computer = (): JSX.Element => {
+
     const macbook = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
     const [reload, setReload] = useState(0)
+    const [cameraZoom, setCameraZoom] = useState(false)
+
 
     useEffect(() => {
         setReload(reload => reload + 1)
     },[])
+
+    {/* -2.2, -1.2 -> -0.5, 3.2 */}
+
+    const { position } = useSpring({
+        position: cameraZoom ? [-2.2, -0.5, 3.2] : [0, -1.2, 0],
+        config: config.molasses
+    })
+
+
+    /* const {position, scale} = useControls('computer', { */
+    /*     position: { */
+    /*         value: [0,0,0], */
+    /*         min: -10, */
+    /*         max: 10 */
+    /*     }, */
+    /*     scale: { */
+    /*         value: 1 */
+    /*     } */
+    /* }) */
 
     return <>
          <Environment
@@ -37,9 +65,22 @@ export const Computer = (): JSX.Element => {
                      position={ [ 0, 0.55, - 1.15 ] }
                  />
 
-                 <primitive
+                 <mesh
+                    visible={false}
+                    scale={[3, 2.5, 3]}
+                    rotation-x={-0.256}
+                    onPointerEnter={() => setCameraZoom(cameraZoom => !cameraZoom)}
+                    onPointerOut={() => setCameraZoom(cameraZoom => !cameraZoom)}
+                 >
+                     <planeGeometry/>
+                     <meshBasicMaterial/>
+                 </mesh>
+
+                 {/* @ts-ignore */}
+                 <a.primitive
                      object={macbook.scene}
                      position-y={- 1.2}
+                     position={position}
                  >
                      <Html
                          transform
@@ -48,11 +89,11 @@ export const Computer = (): JSX.Element => {
                          position={[0, 1.56, -1.4 ]}
                          rotation-x={-0.256}
                      >
-                         <IFrame  >
+                         <IFrame >
                              <IFrameContent />
                          </IFrame >
                      </Html>
-                 </primitive>
+                 </a.primitive>
                  <Text
                      fontSize={1}
                      position={[2,0.75,0.75]}
